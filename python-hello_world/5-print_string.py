@@ -3,4 +3,3 @@ str = "Holberton School"
 print (str * 3)
 print ()
 print (str 0:9)
-print()
