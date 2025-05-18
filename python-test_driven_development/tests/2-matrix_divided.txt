@@ -1,4 +1,4 @@
->>> from your_module import matrix_divided  # replace your_module with actual filename without .py
+>>> from matrix_divided import matrix_divided
 >>> matrix_divided([[4, 8], [12, 16]], 2)
 [[2.0, 4.0], [6.0, 8.0]]
 
