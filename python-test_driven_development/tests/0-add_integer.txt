@@ -46,7 +46,7 @@ TypeError: b must be an integer
 
 # Missing second argument (should use default)
 >>> add_integer(98)
-196  # Replace with your actual default if it’s different
+196
 
 # Missing both arguments
 >>> add_integer()
