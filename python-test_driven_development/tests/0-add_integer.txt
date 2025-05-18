@@ -44,6 +44,10 @@ Traceback (most recent call last):
     ...
 TypeError: b must be an integer
 
+# Missing second argument (should use default)
+>>> add_integer(98)
+98  # Replace 98 with your actual default if it’s different
+
 # Missing both arguments
 >>> add_integer()
 Traceback (most recent call last):
