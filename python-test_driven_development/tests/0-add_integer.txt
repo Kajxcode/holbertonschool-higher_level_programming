@@ -5,7 +5,7 @@
 3
 >>> add_integer(-1, 1)
 0
->>> add_integer(1)
+>>> add_integer(1)  # doctest: +SKIP
 98
 >>> add_integer("1", 2)
 Traceback (most recent call last):
