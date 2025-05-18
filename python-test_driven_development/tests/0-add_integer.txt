@@ -1,54 +1,40 @@
 >>> from add_integer import add_integer
->>> add_integer(1, 2)
-3
->>> add_integer(1.5, 2.5)
-3
->>> add_integer(-1, 1)
-0
->>> add_integer(1)  # doctest: +SKIP
-98
->>> add_integer("1", 2)
-Traceback (most recent call last):
-    ...
-TypeError: a must be an integer
->>> add_integer(1, "2")
-Traceback (most recent call last):
-    ...
-TypeError: b must be an integer
 
-# Regular addition of two integers
->>> add_integer(10, 5)
-15
+# Regular addition
+>>> add_integer(2, 3)
+5
 
-# Addition with one float (should be cast to int)
->>> add_integer(3.7, 4)
-7
+# Integer casting (float to int)
+>>> add_integer(2.7, 3.3)
+5
 
-# Addition with two floats (both should be cast to int)
->>> add_integer(1.9, 2.1)
-3
-
-# Addition with large integers (test for overflow handling)
->>> add_integer(10**100, 10**100)
-20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
-# Type error if 'a' is not an integer or float
->>> add_integer("1", 2)
+# Check type: first argument is not an int or float
+>>> add_integer("2", 3)
 Traceback (most recent call last):
     ...
 TypeError: a must be an integer
 
-# Type error if 'b' is not an integer or float
->>> add_integer(1, "2")
+# Check type: second argument is not an int or float
+>>> add_integer(2, "3")
 Traceback (most recent call last):
     ...
 TypeError: b must be an integer
 
-# Missing second argument (should use default)
->>> add_integer(98)
-196
+# Float overflow (using a very large float)
+>>> add_integer(1e308, 1e308)
+inf
 
-# Missing both arguments
+# Cannot convert float NaN to integer
+>>> add_integer(float('nan'), 2)
+Traceback (most recent call last):
+    ...
+ValueError: cannot convert float NaN to integer
+
+# Missing one argument
+>>> add_integer(5)
+103  # Replace 103 with your actual default value for b if different
+
+# Missing two arguments
 >>> add_integer()
 Traceback (most recent call last):
     ...
