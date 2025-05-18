@@ -1,4 +1,3 @@
-"""
 >>> from add_integer import add_integer
 
 # Regular addition with ints
