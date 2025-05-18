@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+import os.path
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 """
 Module add_integer
 Defines a function that adds two integers.
