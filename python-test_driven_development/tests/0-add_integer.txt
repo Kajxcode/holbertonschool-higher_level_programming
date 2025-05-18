@@ -1,31 +1,17 @@
-#!/usr/bin/python3
-add_integer = __import__('add_integer').add_integer
-
-def test_add_integer():
-    # Test with integers
-    assert add_integer(1, 2) == 3
-    assert add_integer(-10, 10) == 0
-    assert add_integer(0, 0) == 0
-
-    # Test with floats (should be cast to int)
-    assert add_integer(3.7, 4.1) == 7  # 3 + 4
-    assert add_integer(2.99, 5) == 7   # 2 + 5
-
-    # Test default argument
-    assert add_integer(5) == 103       # 5 + 98
-
-    # Test error on invalid types
-    try:
-        add_integer("3", 2)
-    except TypeError as e:
-        assert str(e) == "a must be an integer"
-
-    try:
-        add_integer(3, "2")
-    except TypeError as e:
-        assert str(e) == "b must be an integer"
-
-    print("All tests passed!")
-
-if __name__ == "__main__":
-    test_add_integer()
+>>> from add_integer.py import add_integer
+>>> add_integer(1, 2)
+3
+>>> add_integer(1.5, 2.5)
+3
+>>> add_integer(-1, 1)
+0
+>>> add_integer(1)
+99
+>>> add_integer("1", 2)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+>>> add_integer(1, "2")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
