@@ -1,42 +1,32 @@
-#!/usr/bin/python3
-import unittest
-matrix_divided = __import__('2-matrix_divided').matrix_divided
+>>> from your_module import matrix_divided  # replace your_module with actual filename without .py
+>>> matrix_divided([[4, 8], [12, 16]], 2)
+[[2.0, 4.0], [6.0, 8.0]]
 
-class TestMatrixDivided(unittest.TestCase):
-    def test_basic_division(self):
-        matrix = [[4, 8], [12, 16]]
-        expected = [[2.0, 4.0], [6.0, 8.0]]
-        self.assertEqual(matrix_divided(matrix, 2), expected)
+>>> matrix_divided([[1, 2], [3, 4]], 3)
+[[0.33, 0.67], [1.0, 1.33]]
 
-    def test_float_division(self):
-        matrix = [[5, 10], [15, 20]]
-        expected = [[2.5, 5.0], [7.5, 10.0]]
-        self.assertEqual(matrix_divided(matrix, 2), expected)
+>>> matrix_divided([[5, 10], [15, 20]], 5)
+[[1.0, 2.0], [3.0, 4.0]]
 
-    def test_rounding(self):
-        matrix = [[1, 2], [3, 4]]
-        expected = [[0.33, 0.67], [1.0, 1.33]]
-        self.assertEqual(matrix_divided(matrix, 3), expected)
+>>> matrix_divided([[1]], 1)
+[[1.0]]
 
-    def test_type_error_matrix(self):
-        with self.assertRaises(TypeError) as cm:
-            matrix_divided([["a", "b"]], 2)
-        self.assertEqual(str(cm.exception), "matrix must be a matrix (list of lists) of integers/floats")
+>>> matrix_divided([[1, 2], [3, 4, 5]], 2)  # rows not same size, should raise error
+Traceback (most recent call last):
+    ...
+TypeError: Each row of the matrix must have the same size
 
-    def test_type_error_rows(self):
-        with self.assertRaises(TypeError) as cm:
-            matrix_divided([[1, 2], [3]], 2)
-        self.assertEqual(str(cm.exception), "Each row of the matrix must have the same size")
+>>> matrix_divided([[1, 2], ['3', 4]], 2)  # invalid element type
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-    def test_type_error_div(self):
-        with self.assertRaises(TypeError) as cm:
-            matrix_divided([[1, 2], [3, 4]], "2")
-        self.assertEqual(str(cm.exception), "div must be a number")
+>>> matrix_divided([[1, 2], [3, 4]], 0)  # division by zero
+Traceback (most recent call last):
+    ...
+ZeroDivisionError: division by zero
 
-    def test_zero_division(self):
-        with self.assertRaises(ZeroDivisionError) as cm:
-            matrix_divided([[1, 2], [3, 4]], 0)
-        self.assertEqual(str(cm.exception), "division by zero")
-
-if __name__ == '__main__':
-    unittest.main()
+>>> matrix_divided([[1, 2], [3, 4]], 'a')  # div is not a number
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number
