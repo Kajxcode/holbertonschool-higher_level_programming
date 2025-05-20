@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Module that contains the matrix_divided function to divide all elements of a matrix.
+Module that contains the matrix_divided function to divide all elements
+of a matrix.
 """
 
 
@@ -23,8 +24,13 @@ def matrix_divided(matrix, div):
     """
     if (not isinstance(matrix, list) or
             any(not isinstance(row, list) for row in matrix) or
-            any(not all(isinstance(el, (int, float)) for el in row) for row in matrix)):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+            any(
+                not all(isinstance(el, (int, float)) for el in row)
+                for row in matrix
+            )):
+        raise TypeError(
+            "matrix must be a matrix (list of lists) of integers/floats"
+        )
 
     row_length = len(matrix[0]) if matrix else 0
     if any(len(row) != row_length for row in matrix):
