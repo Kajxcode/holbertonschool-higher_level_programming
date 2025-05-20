@@ -1,7 +1,7 @@
+>>> from add_integer import add_integer
 First import ``add_integer`` from the ``0-add_integer`` file:
 
     >>> add_integer = __import__('0-add_integer').add_integer
-
 # Regular addition with ints
 >>> add_integer(1, 2)
 3
