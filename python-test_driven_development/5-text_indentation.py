@@ -14,9 +14,6 @@ def text_indentation(text):
     Raises:
         TypeError: If text is not a string.
     """
-    if not isinstance(text, str):
-        raise TypeError("text must be a string")
-
     i = 0
     length = len(text)
     output = ""
@@ -24,11 +21,12 @@ def text_indentation(text):
         char = text[i]
         output += char
         if char in ['.', '?', ':']:
-            output = output.rstrip() + char + "\n"
+            output = output.rstrip() + char + "\n\n"
             i += 1
-            while i < length and text[i] == '':
+            while i < length and text[i] == ' ':
                 i += 1
             continue
         i += 1
 
     print(output.rstrip())
+    
