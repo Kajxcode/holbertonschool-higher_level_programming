@@ -16,11 +16,11 @@ class Square:
     @property
     def size(self):
         return self.__size
-    
+
     @size.setter
     def size(self, value):
         """sets the size of square
-        args: value int 
+        args: value int
         raises: type error, value error
         """
         if not isinstance(value, int):
