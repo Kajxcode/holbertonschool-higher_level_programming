@@ -6,11 +6,11 @@ This module defines a function
 
 def text_indentation(text):
     """
-    Prints a text with a newline after each occurrence of '.', '?', and ':'.
-    There should be no spaces at the beginning or end of each printed line.
+    Prints a text with a new line after each '.', '?', and ':' character.
+    Removes leading spaces at the beginning of each printed line.
 
     Args:
-        text (str): The input text to format.
+        text (str): The text to format.
 
     Raises:
         TypeError: If text is not a string.
@@ -20,13 +20,21 @@ def text_indentation(text):
 
     i = 0
     length = len(text)
+    buffer = ""
+
     while i < length:
-        print(text[i], end="")
-        if text[i] in ['.', '?', ':']:
-            print("\n")
-            # Skip any spaces after punctuation
+        char = text[i]
+        buffer += char
+
+        if char in ['.', '?', ':']:
+            print(buffer.strip())
+            buffer = ""
             i += 1
+            # skip spaces
             while i < length and text[i] == " ":
                 i += 1
             continue
         i += 1
+
+    if buffer.strip():
+        print(buffer.strip())
