@@ -27,7 +27,6 @@ def text_indentation(text):
         if char in ['.', '?', ':']:
             print(segment.strip())
             print()
-            print()
             segment = ""
             i += 1
             while i < length and text[i] == ' ':
