@@ -5,3 +5,6 @@ this module defines a class
 
 class Square:
     pass
+"""
+defines an empty clas named square
+"""
