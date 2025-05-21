@@ -26,7 +26,7 @@ def text_indentation(text):
         if char in ['.', '?', ':']:
             output = output.rstrip() + char + "\n"
             i += 1
-            while i < length and text[i] == ' ':
+            while i < length and text[i] == '':
                 i += 1
             continue
         i += 1
