@@ -1,20 +1,33 @@
 >>> text_indentation = __import__('5-text_indentation').text_indentation
+"""
 >>> text_indentation("Hello. How are you? I'm fine: Thanks.")
-    Hello.
-    How are you?
-    I'm fine:
-    Thanks.
-    >>> text_indentation("This is a sentence.\n\nAnother starts here.")
-    This is a sentence.
+Hello.
 
-    Another starts here.
-    >>> text_indentation("Wow? Really: Yes. Indeed!")
-    Wow?
-    Really:
-    Yes.
-    Indeed!
-    >>> text_indentation("  Space before and after.   Still good?  Yes:")
-      Space before and after.
-    Still good?
-    Yes:
-    """
+How are you?
+
+I'm fine:
+
+Thanks.
+
+>>> text_indentation("This is a sentence.\n\nAnother starts here.")
+This is a sentence.
+
+
+Another starts here.
+
+>>> text_indentation("Wow? Really: Yes. Indeed!")
+Wow?
+
+Really:
+
+Yes.
+
+Indeed!
+
+>>> text_indentation("  Space before and after.   Still good?  Yes:")
+  Space before and after.
+
+Still good?
+
+Yes:
+"""
