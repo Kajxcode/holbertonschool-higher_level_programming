@@ -20,23 +20,12 @@ def text_indentation(text):
 
     i = 0
     length = len(text)
-    segment = ""
-
     while i < length:
-        char = text[i]
-        if char in ['.', '?', ':']:
-            segment = segment.rstrip()  # remove trailing spaces before punctuation
-            print(segment + char)
-            print()  # print single blank line
+        print(text[i], end="")
+        if text[i] in ['.', '?', ':']:
+            print("\n")
             i += 1
-            # Skip all spaces after punctuation to avoid leading spaces in next line
-            while i < length and text[i] == ' ':
+            while i < length and text[i] == " ":
                 i += 1
-            segment = ""  # reset segment for next line
-        else:
-            segment += char
-            i += 1
-
-    # Print remaining text if any (strip trailing spaces)
-    if segment:
-        print(segment.rstrip())
+            continue
+        i += 1
