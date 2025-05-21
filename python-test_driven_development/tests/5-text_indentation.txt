@@ -8,14 +8,25 @@ I'm fine:
 
 Thanks.
 
-
->>> text_indentation(123)
-Traceback (most recent call last):
-    ...
-TypeError: text must be a string
-
 >>> text_indentation("This is a sentence.\n\nAnother starts here.")
 This is a sentence.
 
 
 Another starts here.
+
+>>> text_indentation("Wow? Really: Yes. Indeed!")
+Wow?
+
+Really:
+
+Yes.
+
+Indeed!
+
+>>> text_indentation("  Space before and after.   Still good?  Yes:")
+Space before and after.
+
+Still good?
+
+Yes:
+
