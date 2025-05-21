@@ -1,11 +1,8 @@
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 >>> text_indentation("Hello. How are you? I'm fine: Thanks.")
 Hello.
-
 How are you?
-
 I'm fine:
-
 Thanks.
 
 >>> text_indentation(123)
