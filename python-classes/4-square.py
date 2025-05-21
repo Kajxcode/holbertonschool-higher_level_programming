@@ -11,6 +11,9 @@ class Square:
         args:
         size : size of square
         """
+    def size(self):
+        return self.size
+    
     def size(self, value):
         """sets the size of square
         args: value int 
