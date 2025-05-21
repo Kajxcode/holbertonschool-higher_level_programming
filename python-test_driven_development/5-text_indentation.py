@@ -20,23 +20,13 @@ def text_indentation(text):
 
     i = 0
     length = len(text)
-    result = ""
     while i < length:
-        char = text[i]
-        result += char
-        if char in ".?:":
-
-            # Skip any following spaces
+        print(text[i], end="")
+        if text[i] in ['.', '?', ':']:
+            print("\n")
+            # Skip any spaces after punctuation
             i += 1
             while i < length and text[i] == " ":
                 i += 1
-
-            result += "\n"
             continue
         i += 1
-
-    # Remove trailing whitespace-only lines and strip lines
-    lines = [line.strip() for line in result.split("\n") if line.strip()]
-
-    for line in lines:
-        print(line)  # Always includes \n
