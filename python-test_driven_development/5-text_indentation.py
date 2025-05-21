@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+This module defines a function
+"""
 def text_indentation(text):
     """
     Prints a text with 2 new lines after each '.', '?' or ':'.
