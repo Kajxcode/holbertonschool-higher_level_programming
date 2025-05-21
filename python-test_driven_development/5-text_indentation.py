@@ -19,20 +19,16 @@ def text_indentation(text):
 
     i = 0
     length = len(text)
-    segment = ""
-
+    output = ""
     while i < length:
         char = text[i]
-        segment += char
+        output += char
         if char in ['.', '?', ':']:
-            print(segment.strip())
-            print()
-            segment = ""
+            output = output.rstrip() + char + "\n\n"
             i += 1
             while i < length and text[i] == ' ':
                 i += 1
             continue
         i += 1
 
-    if segment:
-        print(segment.strip())
+    print(output.strip())
