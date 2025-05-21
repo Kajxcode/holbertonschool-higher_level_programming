@@ -35,15 +35,8 @@ def text_indentation(text):
             continue
         i += 1
 
-    # Remove any trailing newline caused by last punctuation
-    lines = result.split("\n")
-    # Filter out purely whitespace lines and strip each
-    lines = [line.strip() for line in lines if line.strip()]
+    # Remove trailing whitespace-only lines and strip lines
+    lines = [line.strip() for line in result.split("\n") if line.strip()]
 
-    for idx, line in enumerate(lines):
-        # Print each line without trailing spaces
-        if idx < len(lines) - 1:
-            print(line)
-        else:
-            print(line, end='')  # No newline on the last line
-
+    for line in lines:
+        print(line)  # Always includes \n
