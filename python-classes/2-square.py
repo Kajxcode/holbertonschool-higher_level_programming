@@ -5,8 +5,8 @@
 class Square:
     """defines a square"""
     pass
-def __init__(self, size=0):
-    """intialise a new square
+    def __init__(self, size=0):
+        """intialise a new square
     
     args:
     size : size of square
