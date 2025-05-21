@@ -27,3 +27,5 @@ def text_indentation(text):
 
     for line in output.splitlines():
         print(line.strip())
+    print()
+    
