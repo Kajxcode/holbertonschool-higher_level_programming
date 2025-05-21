@@ -11,7 +11,7 @@ def __init__(self, size=0):
     args:
     size : size of square
     """
-    self.size__size = size
+    self.__size = size
     
     if size is not int:
         raise TypeError("size must be an integer")
