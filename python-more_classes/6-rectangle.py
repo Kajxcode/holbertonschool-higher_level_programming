@@ -47,13 +47,13 @@ class Rectangle:
 
     def perimeter(self):
         """Return the perimeter, or 0 if width or height is 0."""
-        if self.__width == 0 or self.__height == 0:
+        if self.__width is 0 or self.__height is 0:
             return 0
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
         """Return string representation using '#'."""
-        if self.__width == 0 or self.__height == 0:
+        if self.__width is 0 or self.__height is 0:
             return ""
         return "\n".join(["#" * self.__width for _ in range(self.__height)])
 
