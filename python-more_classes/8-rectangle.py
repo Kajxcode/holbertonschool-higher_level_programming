@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class with various features 
+"""Defines a Rectangle class with various features
 including instance counting and comparison."""
+
 
 class Rectangle:
     """Rectangle class with width, height, and print capabilities."""

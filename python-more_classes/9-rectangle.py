@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class with various features including square creation."""
+"""Defines a Rectangle class with various features
+including square creation."""
+
 
 class Rectangle:
     """Rectangle class with width, height, instance counting, and more."""
