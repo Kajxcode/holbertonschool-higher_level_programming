@@ -3,12 +3,13 @@
 
 
 class Rectangle:
-    """Defines a Rectangle with width and height, and tracks instances."""
+    """Defines a Rectangle with width and height,
+     and tracks instances."""
 
     number_of_instances = 0
 
     def __init__(self, width=0, height=0):
-        """Initialize a new Rectangle instance and increment instance counter."""
+        """Initialize a new Rectangle instance and increment"""
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
@@ -58,10 +59,10 @@ class Rectangle:
         return "\n".join(["#" * self.__width for _ in range(self.__height)])
 
     def __repr__(self):
-        """Return a string that recreates the instance with eval()."""
+        """recreates the instance with eval()."""
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
-        """Print a message and decrement instance counter when deleted."""
+        """Print a message and decrement instance counter."""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1

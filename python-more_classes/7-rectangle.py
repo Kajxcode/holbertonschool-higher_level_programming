@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class with instance counting and customizable print symbol."""
+"""Defines a Rectangle class with instance counting
+ and customizable print symbol."""
 
 
 class Rectangle:
-    """Rectangle with width, height, instance count, and customizable print symbol."""
+    """Rectangle with width, height, instance count,
+     and customizable print symbol."""
 
     number_of_instances = 0
     print_symbol = "#"
@@ -47,7 +49,8 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        """Return the perimeter of the Rectangle, or 0 if width or height is 0."""
+        """Return the perimeter of the Rectangle,
+         or 0 if width or height is 0."""
         if self.__width is 0 or self.__height is 0:
             return 0
         return 2 * (self.__width + self.__height)
