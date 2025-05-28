@@ -1,4 +1,4 @@
->>> Mylist = __import__('1-my_list').my_list
+>>> MyList = __import__('1-my_list').my_list
 
 # Test present: check instantiation
 >>> my_list = MyList()
