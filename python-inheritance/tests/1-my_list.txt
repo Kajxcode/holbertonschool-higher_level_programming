@@ -1,0 +1,57 @@
+>>> my_list = __import__('1-my_list').my_list
+
+# Test present: check instantiation
+>>> my_list = MyList()
+>>> isinstance(my_list, MyList)
+True
+
+# Test present: check inherits from list
+>>> isinstance(my_list, list)
+True
+
+# Test present: check __str__
+>>> print(my_list)
+[]
+
+# Test present: check append()
+>>> my_list.append(3)
+>>> my_list.append(1)
+>>> my_list.append(2)
+>>> print(my_list)
+[3, 1, 2]
+
+# Test present: check print_sorted() with sorted append
+>>> sorted_list = MyList()
+>>> sorted_list.append(1)
+>>> sorted_list.append(2)
+>>> sorted_list.append(3)
+>>> sorted_list.print_sorted()
+[1, 2, 3]
+
+# Test present: check print_sorted() with not sorted append
+>>> unsorted_list = MyList()
+>>> unsorted_list.append(5)
+>>> unsorted_list.append(2)
+>>> unsorted_list.append(9)
+>>> unsorted_list.print_sorted()
+[2, 5, 9]
+
+# Test present: check print_sorted() with no sorted append with negative number
+>>> neg_list = MyList()
+>>> neg_list.append(3)
+>>> neg_list.append(-1)
+>>> neg_list.append(0)
+>>> neg_list.print_sorted()
+[-1, 0, 3]
+
+# Test present: check print_sorted() with empty list
+>>> empty_list = MyList()
+>>> empty_list.print_sorted()
+[]
+
+# Test present: check print_sorted() returns a new list
+>>> check_list = MyList([3, 1, 2])
+>>> check_list.print_sorted()
+[1, 2, 3]
+>>> print(check_list)
+[3, 1, 2]
