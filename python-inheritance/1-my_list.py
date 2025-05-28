@@ -2,8 +2,11 @@
 """this module returns a sorted list"""
 
 
-class Mylist(list):
-    """"method returns sorted list"""
+class list:
+    """"defines class lsit"""
 
-    def print_sorted(self):
-        print(sorted(self))
+
+    class Mylist(list):
+        """defines class mylist"""
+        def print_sorted(self):
+            print(sorted(self))
