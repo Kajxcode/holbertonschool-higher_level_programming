@@ -10,23 +10,13 @@ class Square(Rectangle):
     """defines a square class"""
     def __init__(self, size):
         self.__size = size
-
-    def integer_validator(self, name, value):
-        """validates integer is positive
-
-        Args:
-        name
-        value
-
-        Raises:
-        typeerror
-        valueerror
-        """
-        if not isinstance(value, int) or isinstance(value, bool):
-            raise TypeError(f"{name} must be an integer")
-        if value <= 0:
-            raise ValueError(f"{name} must be greater than 0")
+        self.integer_validator("size", size)
+        super().__init___(size, size)
 
     def area(self):
         """Returns the area of the rectangle"""
         return self.__size * self.__size
+
+    def __str__(self):
+        """Returns string representation"""
+        return f"[Square] {self.__size}/{self.__size}"
