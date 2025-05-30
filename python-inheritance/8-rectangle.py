@@ -17,5 +17,6 @@ class Rectangle(BaseGeometry):
         self.integer_validator("height", height)
         self.__height = height
 
+
 if __name__ == "__main__":
     print(issubclass(Rectangle, BaseGeometry))
