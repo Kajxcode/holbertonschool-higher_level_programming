@@ -4,13 +4,17 @@
 
 class CountedIterator:
     def __init__(self, iterable):
-        self._iterator = iter(iterable)  # Get the actual iterator
-        self.count = 0                   # Count of items iterated
+        self._iterator = iter(iterable)
+        self._count = 0
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        item = next(self._iterator)     # Get next item
-        self.count += 1                 # Increment counter
+        item = next(self._iterator)
+        self._count += 1
         return item
+
+    def get_count(self):
+        return self._count
+
