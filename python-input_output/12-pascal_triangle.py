@@ -5,8 +5,8 @@
 def pascal_triangle(n):
     """creats pascals traingle according to n"""
     if n <= 0:
-        return[]
-    
+        return  []
+
     triangle = [[1]]
 
     for i in range(1, n):
