@@ -8,12 +8,14 @@ import os
 
 save_file = "add_item.json"
 
+
 def load_from_json_file(filename):
     """Load JSON object from a file."""
     if os.path.exists(filename):
         with open(filename, "r", encoding="utf-8") as f:
             return json.load(f)
     return []
+
 
 def save_to_json_file(my_obj, filename):
     """Save Python object to file as JSON."""
