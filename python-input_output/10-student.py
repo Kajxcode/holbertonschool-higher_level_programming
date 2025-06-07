@@ -9,7 +9,9 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
-        """Returns the dictionary description of an object for JSON serialization"""
+        """Returns the dictionary description of an object
+        for JSON serialization"""
         if (type(attrs) is list and all(type(attr) is str for attr in attrs)):
-            return {key: getattr(self, key) for key in attrs if hasattr(self, key)}
+            return {key: getattr(self, key) for key in attrs
+                     if hasattr(self, key)}
         return self.__dict__

@@ -9,5 +9,5 @@ class Student:
         self.age = age
 
     def to_json(self):
-        """Returns the dictionary description of an object for JSON serialization"""
+        """Returns the dictionary description of an object for JSON"""
         return self.__dict__
