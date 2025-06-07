@@ -13,5 +13,5 @@ class Student:
         for JSON serialization"""
         if (type(attrs) is list and all(type(attr) is str for attr in attrs)):
             return {key: getattr(self, key) for key in attrs
-                     if hasattr(self, key)}
+                    if hasattr(self, key)}
         return self.__dict__
