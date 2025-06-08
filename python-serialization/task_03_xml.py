@@ -29,20 +29,21 @@ def deserialize_from_xml(filename):
         result = {}
         for child in root:
             text = child.text
-            if text is not None:
-                if text.isdigit():
-                    value = int(text)
-                else:
-                    try:
-                        value = float(text)
-                    except ValueError:
-                        if text.lower() == "true":
-                            value = True
-                        elif text.lower() == "false":
-                            value = False
-                        else:
-                            value = text
-                result[child.tag] = value
+            if text is None:
+                result[child.tag] = None
+                continue
+
+            if text.lower() == "true":
+                result[child.tag] = True
+            elif text.lower() == "false":
+                result[child.tag] = False
+            elif text.isdigit():
+                result[child.tag] = int(text)
+            else:
+                try:
+                    result[child.tag] = float(text)
+                except ValueError:
+                    result[child.tag] = text
         return result
 
     except (ET.ParseError, FileNotFoundError, OSError):
