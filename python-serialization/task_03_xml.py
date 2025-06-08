@@ -21,7 +21,8 @@ def serialize_to_xml(dictionary, filename):
 
 
 def deserialize_from_xml(filename):
-    """Deserializes an XML file to a Python dictionary"""
+    import xml.etree.ElementTree as ET
+
     try:
         tree = ET.parse(filename)
         root = tree.getroot()
@@ -31,19 +32,12 @@ def deserialize_from_xml(filename):
             text = child.text
             if text is None:
                 result[child.tag] = None
-                continue
-
-            if text.lower() == "true":
+            elif text.lower() == "true":
                 result[child.tag] = True
             elif text.lower() == "false":
                 result[child.tag] = False
-            elif text.isdigit():
-                result[child.tag] = int(text)
             else:
-                try:
-                    result[child.tag] = float(text)
-                except ValueError:
-                    result[child.tag] = text
+                result[child.tag] = text  # Leave everything else as string
         return result
 
     except (ET.ParseError, FileNotFoundError, OSError):
