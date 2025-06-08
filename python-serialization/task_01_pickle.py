@@ -7,7 +7,7 @@ import os
 
 class CustomObject:
     """custom clas wsith name age and is_student"""
-    def __init__(self, name, age, is_student)
+    def __init__(self, name, age, is_student):
         self.name = name
         self.age = age
         self.is_student = is_student
