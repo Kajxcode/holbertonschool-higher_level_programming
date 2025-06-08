@@ -25,7 +25,7 @@ class CustomObject:
              return None
     
     @classmethod
-    def deserealize(cls, filename):
+    def deserialize(cls, filename):
         if not os.path.exists(filename):
             return None
         try:
