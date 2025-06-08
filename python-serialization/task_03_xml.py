@@ -9,36 +9,23 @@ def serialize_to_xml(dictionary, filename):
         root = ET.Element("data")
 
         for key, value in dictionary.items():
-            child = ET.SubElement(root, str(key))
-            child.text = str(value)
+            child = ET.SubElement(root, key)
+            child.text = str(value)  # Convert all values to string before saving
 
         tree = ET.ElementTree(root)
-        tree.write(filename, encoding='utf-8', xml_declaration=True)
+        tree.write(filename)
         return True
-
-    except (ET.ParseError, OSError):
+    except Exception:
         return False
 
-
 def deserialize_from_xml(filename):
-    import xml.etree.ElementTree as ET
-
     try:
         tree = ET.parse(filename)
         root = tree.getroot()
 
         result = {}
         for child in root:
-            text = child.text
-            if text is None:
-                result[child.tag] = None
-            elif text.lower() == "true":
-                result[child.tag] = True
-            elif text.lower() == "false":
-                result[child.tag] = False
-            else:
-                result[child.tag] = text  # Leave everything else as string
+            result[child.tag] = child.text if child.text is not None else ""
         return result
-
     except (ET.ParseError, FileNotFoundError, OSError):
         return None
