@@ -29,10 +29,11 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(b"OK")
         
         else:
-            self.send_response(HTTPStatus.NOT_FOUND)
+            self.send_response(404)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            self.wfile.write(b"404 Not Found")
+            self.wfile.write(b'Error: Endpoint not found')
+
 
 if __name__ == '__main__':
     PORT = 8000
