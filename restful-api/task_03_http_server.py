@@ -29,11 +29,12 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(b"OK")
         
         else:
-            self.send_response(HTTPStatus.NOT_FOUND)
-            self.send_header('Content-Type', 'application/json')
+            """unknown endpoints handling"""
+            self.send_response(404)
+            self.send_header("content-type", "text/plain")
             self.end_headers()
-            error_message = {"error": "Endpoint not found"}
-            self.wfile.write(json.dumps(error_message).encode())
+            message = "Endpoint not found"
+            self.wfile.write(message.encode("utf-8"))
 
 
 if __name__ == '__main__':
