@@ -1,3 +1,4 @@
+-- script to create table with multiple values
 CREATE TABLE second_table (
     id INT PRIMARY KEY,
     name VARCHAR(256) NOT NULL,
