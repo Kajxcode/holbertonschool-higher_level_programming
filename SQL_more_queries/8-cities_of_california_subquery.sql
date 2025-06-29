@@ -1,5 +1,5 @@
 -- script that lists cities of california
-SELECT cities.id, cities name
+SELECT id, name
 FROM cities
 WHERE cities.state.id = (
     SELECT id FROM states WHERE name = 'California' LIMIT 1
