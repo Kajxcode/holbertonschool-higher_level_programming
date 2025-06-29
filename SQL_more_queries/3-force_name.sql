@@ -1,5 +1,5 @@
 -- script that creates table
 CREATE TABLE force_name (
-    id INT,
+    id INT PRIMARY KEY,
     name VARCHAR(256),
 );
