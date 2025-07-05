@@ -21,7 +21,7 @@ if __name__ == "__main__":
     )
     cur = db.cursor()
     query = (
-        "SELECT * FROM states WHERE name = '{}' "
+        "SELECT * FROM states WHERE BINARY name = '{}' "
         "ORDER BY id ASC"
     ).format(state_searched)
     cur.execute(query)
