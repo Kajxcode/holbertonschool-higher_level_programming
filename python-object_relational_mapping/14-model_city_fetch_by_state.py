@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-prints all city objects from DB
+Prints all City objects from the database
 """
 
 import sys
@@ -10,14 +10,9 @@ from model_state import Base, State
 from model_city import City
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: {} <username> <password> <database>".format(sys.argv[0]))
-        sys.exit(1)
-
     user = sys.argv[1]
     passwd = sys.argv[2]
     db_name = sys.argv[3]
-
 
     engine = create_engine(
         f"mysql+mysqldb://{user}:{passwd}@localhost:3306/{db_name}",
@@ -26,11 +21,14 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
+    results = (
+        session.query(State.name, City.id, City.name)
+        .join(City, State.id == City.state_id)
+        .order_by(City.id)
+        .all()
+    )
 
-    search = session.query(City, State).join(State).order_by(City.id).all()
+    for state_name, city_id, city_name in results:
+        print(f"{state_name}: ({city_id}) {city_name}")
 
-    for city, state in search:
-        print(f"{state.name}: ({city.id}) {city.name}")
-
-    session.commit()
     session.close()
