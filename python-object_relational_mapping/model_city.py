@@ -11,7 +11,7 @@ Base = declarative_base()
 
 class City(Base):
     """city class mapped to cities table"""
-    ___tablename__ = 'cities'
+    __tablename__ = 'cities'
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)

@@ -13,14 +13,12 @@ if __name__ == "__main__":
     passwd = sys.argv[2]
     db_name = sys.argv[3]
 
-
     engine = create_engine(
         f"mysql+mysqldb://{user}:{passwd}@localhost:3306/{db_name}",
         pool_pre_ping=True
     )
     Session = sessionmaker(bind=engine)
     session = Session()
-
 
     state = session.query(State).filter(State.id == 2).first()
 
