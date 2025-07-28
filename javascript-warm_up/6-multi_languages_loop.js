@@ -1,10 +1,12 @@
 #!/usr/bin/node
 
-const lines = ['C is fun', 'Python is cool', 'Javascript is amazing'];
-
+const lines = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
+let i = 0;
 let output = '';
-for (let i = 0; i < lines.length; i++) {
-    output += lines[i];
-    if (i !== lines.length - 1) output += '\n';
+
+while (i < lines.length) {
+  output += lines[i] + '\n';
+  i++;
 }
-console.log(output);
+
+console.log(output.trim());
