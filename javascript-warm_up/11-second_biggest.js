@@ -6,10 +6,10 @@ if (args.length <= 1) {
   console.log(0);
 } else {
   const uniqueArgs = [...new Set(args)];
-  if (unqiueArgs.length <= 1) {
+  if (uniqueArgs.length <= 1) {
     console.log(0);
   } else {
-    unqiueArgs.sort((a, b) => b - a);
+    uniqueArgs.sort((a, b) => b - a);
     console.log(uniqueArgs[1]);
   }
 }
