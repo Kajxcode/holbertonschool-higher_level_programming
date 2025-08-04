@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from os import exists
+from os.path import exists
 
 """Module that defines a function for generating invitations"""
 def generate_invitations(template, attendees):
@@ -10,8 +10,8 @@ def generate_invitations(template, attendees):
     if not template.strip():
         print("Error: 'template' cannot be empty.")
         return
-    
-    if not isinstance(attendees, dict):
+
+    if not isinstance(attendees, list) or not all(isinstance(a, dict) for a in attendees):
         print("Error: attendees must be a list of dictionaries")
         return
     
@@ -19,14 +19,16 @@ def generate_invitations(template, attendees):
         print("Error: 'attendees' list cannot be empty.")
         return
 
-    for index, attendee in enumerate(attendees_list, start=1):
-        template_schema = template
+    for index, attendee in enumerate(attendees, start=1):
+        filled_template = template
         for key in ['name', 'event_title', 'event_date', 'event_location']:
-            placeholder = "{" + f"{key}" + "}"
-            value = attendee.get(key) or "N/A"
-            template_schema = template_schema.replace(placeholder, value)
-        if not exists(f"output_{index}.txt"):
-            with open(f"output_{index}.txt", "w") as file:
-                file.write(template_schema)
-        else:
-            print("ERROR: file already exists")
+            placeholder = f"{{{key}}}"
+            value = attendee.get(key, "N/A")
+            filled_template = filled_template.replace(placeholder, value)
+
+    filename = f"output_{index}.txt"
+    if not exists(filename):
+        with open(filename, "w") as file:
+                file.write(filled_template)
+    else:
+        print(f"ERROR: {filename} already exists")
