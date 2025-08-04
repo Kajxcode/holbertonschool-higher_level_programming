@@ -26,9 +26,9 @@ def generate_invitations(template, attendees):
             value = attendee.get(key, "N/A")
             filled_template = filled_template.replace(placeholder, value)
 
-    filename = f"output_{index}.txt"
-    if not exists(filename):
-        with open(filename, "w") as file:
+        filename = f"output_{index}.txt"
+        if not exists(filename):
+            with open(filename, "w") as file:
                 file.write(filled_template)
-    else:
-        print(f"ERROR: {filename} already exists")
+        else:
+            print(f"ERROR: {filename} already exists")
