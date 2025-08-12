@@ -15,9 +15,13 @@ def about():
 def contact():
     return render_template('contact.html')
 
-@app.route('/items')
+@app.route("/items")
 def items():
-    items_list = ["Python Book", "Flask Mug", "Jinja Sticker"]
+    data_path = Path(__file__).with_name("items.json")
+    try:
+        items_list = json.loads(data_path.read_text(encoding="utf-8")).get("items", [])
+    except (FileNotFoundError, json.JSONDecodeError):
+        items_list = []
     return render_template("items.html", items=items_list)
 
 if __name__ == '__main__':
