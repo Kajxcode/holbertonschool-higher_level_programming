@@ -17,9 +17,8 @@ def contact():
 
 @app.route('/items')
 def items():
-    with open('templates/items.json') as f:
-        items = json.load(f)
-    return render_template('items.html', items=items['items'])
+    items_list = ["Python Book", "Flask Mug", "Jinja Sticker"]
+    return render_template("items.html", items=items_list)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
