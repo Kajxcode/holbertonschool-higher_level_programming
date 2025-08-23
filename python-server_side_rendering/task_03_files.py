@@ -4,73 +4,74 @@ import csv
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def home():
     return render_template('index.html')
-
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
 
-
 @app.route('/items')
 def items():
-    filename = "./data/items.json"
-    try:
-        with open(filename, 'r', encoding="utf-8") as f:
-            items = json.loads(f.read())["items"]
-    except (FileNotFoundError, KeyError):
-        items = []
-    return render_template('items.html', items=items)
 
+    try:
+        with open('items.json', 'r') as f:
+            data = json.load(f)
+            items_list = data.get('items', [])
+    except (FileNotFoundError, json.JSONDecodeError):
+        items_list = []
+
+    return render_template('items.html', items=items_list)
 
 @app.route('/products')
 def products():
-    source = request.args.get('source')
-    product_id = request.args.get('id')
-    items = []
-    message = None
 
-    if source in ['json', 'csv']:
-        filename = f"./products.{source}"
+    source = request.args.get('source', 'json')  
+    product_id = request.args.get('id', type=int) 
+
+    product_data = []
+    headers = []
+    error_message = None
+
+
+    if source not in ['json', 'csv']:
+        error_message = "Wrong source"
+
+
+    try:
+        with open('products.json', 'r') as f:
+            product_data = json.load(f)
+            headers = list(product_data[0].keys())
+    except (FileNotFoundError, json.JSONDecodeError):
+        error_message = "File not found"
+ 
         try:
-            with open(filename, 'r', encoding="utf-8") as f:
-                if source == 'json':
-                    items = json.load(f)
-                else:
-                    reader = csv.DictReader(f)
-                    items = [row for row in reader]
-                    # convert id to int for consistency
-                    for item in items:
-                        item["id"] = int(item["id"])
-                        item["price"] = float(item["price"])
+            with open('products.csv', 'r') as f:
+                reader = csv.DictReader(f)
+                product_data = list(reader)
+                headers = list(product_data[0].keys())
         except FileNotFoundError:
-            message = "File not found"
-            items = []
-
-        # if filtering by ID
-        if product_id:
-            try:
-                product_id = int(product_id)
-                items = [item for item in items if item["id"] == product_id]
-                if not items:
-                    message = "Product not found"
-            except ValueError:
-                message = "Invalid product ID"
-
-    else:
-        message = "Wrong source"
-
-    return render_template('product_display.html', items=items, message=message)
+            error_message = "File not found"
 
 
+    if product_id is not None:
+        filtered_products = []
+        for product in product_data:
+            if product.get('id') == product_id:
+                filtered_products.append(product)
+        if not filtered_products:
+            error_message = "Product not found"
+            product_data = []
+        else:
+            product_data = filtered_products
+
+    return render_template('product_display.html', products=product_data,
+                           headers=headers, error_message=error_message)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
