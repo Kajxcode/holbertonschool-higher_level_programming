@@ -39,7 +39,7 @@ def products():
     message = None
 
     if source in ['json', 'csv']:
-        filename = f"./data/products.{source}"
+        filename = f"./products.{source}"
         with open(filename, 'r', encoding="utf-8") as f:
             if source == 'json':
                 items = json.loads(f.read())
