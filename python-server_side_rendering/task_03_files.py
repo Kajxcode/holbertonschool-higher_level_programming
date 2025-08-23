@@ -34,30 +34,42 @@ def items():
 @app.route('/products')
 def products():
     source = request.args.get('source')
-    id = request.args.get('id')
+    product_id = request.args.get('id')
     items = []
     message = None
 
     if source in ['json', 'csv']:
         filename = f"./products.{source}"
-        with open(filename, 'r', encoding="utf-8") as f:
-            if source == 'json':
-                items = json.loads(f.read())
-            else:
-                dictionaries = csv.DictReader(f)
-                for item in dictionaries:
-                    items.append(item)
-        if id:
-            id = int(id)
-            valid = [item["id"] for item in items]
-            print(valid)
-            if id not in valid:
-                print(id)
-                message = "Product not found"
+        try:
+            with open(filename, 'r', encoding="utf-8") as f:
+                if source == 'json':
+                    items = json.load(f)
+                else:
+                    reader = csv.DictReader(f)
+                    items = [row for row in reader]
+                    # convert id to int for consistency
+                    for item in items:
+                        item["id"] = int(item["id"])
+                        item["price"] = float(item["price"])
+        except FileNotFoundError:
+            message = "File not found"
+            items = []
+
+        # if filtering by ID
+        if product_id:
+            try:
+                product_id = int(product_id)
+                items = [item for item in items if item["id"] == product_id]
+                if not items:
+                    message = "Product not found"
+            except ValueError:
+                message = "Invalid product ID"
+
     else:
         message = "Wrong source"
 
-    return render_template('product_display.html', items=items, id=id, message=message)
+    return render_template('product_display.html', items=items, message=message)
+
 
 
 if __name__ == '__main__':
